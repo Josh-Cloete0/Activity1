@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Image,Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
   return (
@@ -12,6 +12,9 @@ export default function App() {
       <Button title='Add User'/>
       
       <StatusBar style="auto" />
+      <View>
+        <Image source={require('./Images/Welcome_to_react.png')}/>
+      </View>
     </View>
   );
 }
