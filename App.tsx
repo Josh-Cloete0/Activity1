@@ -40,12 +40,12 @@ const FadeInView = (props:any) => {
     </Animated.View>
   );
 };
-function isEmpty(Value){
+function isEmpty(Value: any){
   //null or undefined
-  (Value == null) ||
+  return (Value == null) ||
 
   //has length and length is 0
-  Value.hasOwnProperty('length') && Value.length === 0 ||
+  (Value.hasOwnProperty('length') && Value.length === 0) ||
   //is an Object and has no keys
   (Value.constructor === Object && Object.keys(Value).length === 0);
 }
@@ -99,11 +99,13 @@ function MainScreen({ navigation}:any) {
           setError('');
           }
           else{
-            setError('Please fill in both fields')
-          }/>
-          </FadeInView>
-            </ScrollView>
-          }   </SafeAreaView>
+            setError('Please fill in both fields');
+          }
+        }} />
+        </FadeInView>
+        <Text style={styles.red}>{Error}</Text>
+        </ScrollView>
+       </SafeAreaView>
     </View>
 
   );
