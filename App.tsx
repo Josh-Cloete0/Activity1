@@ -3,7 +3,7 @@ import { Animated } from 'react-native';
 import { useState, useRef, useEffect} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+import { RadioButton } from 'react-native-paper';
 
 const Stack = createNativeStackNavigator();
 
@@ -117,6 +117,7 @@ function MainScreen({ navigation}:any) {
 function ViewDetails({navigation, route}:any) {
   const NameGet = route.params.NameSend ;
   const SurnameGet = route.params.SurnameSend
+  const[selectedValue, setSelectedValue] = useState('0')
   // When outside return section you can use single-line comments
 
   /* you can also use multi-line comments
@@ -133,7 +134,9 @@ function ViewDetails({navigation, route}:any) {
                     backgroundColor:'purple'}}>
       <Text style={{fontSize:34,color:'white'}}>
             Name: {NameGet} Surname: {SurnameGet} </Text>
+            <Text>Pleas select what is your favourite coding language</Text>
     </View>
+    
   );
 };
 
