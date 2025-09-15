@@ -4,6 +4,7 @@ import { useState, useRef, useEffect} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -54,7 +55,7 @@ function isEmpty(Value: any){
 function MainScreen({ navigation}:any) {
   const [Name, setName] = useState('');
   const [Surname, setSurname] = useState('');
-  const [Error, setError] = useState('');
+  const [Error, setError] = useState(false);
 
   console.log("App starting up now.")
 
@@ -65,12 +66,14 @@ function MainScreen({ navigation}:any) {
         <ScrollView>
        <View style={styles.mainPicture}>
         <Image style={styles.ImageSize}
-          source={require('./img/welcome_to_react.png')} /> 
+          source={require('./Images/Welcome_to_react.png')} /> 
       </View>
 
 
        <Text style={styles.welcomeText}>Welcome your React App!</Text>
         <FadeInView>
+          <Text style ={Error? styles.red : styles.blank}> </Text>
+          {Error?"Please fill in all the fields":""}
         <View style={styles.InputFlex}>
         <Text style={styles.HeadingText}>Enter Name:</Text>
         <TextInput  style={styles.InputBoxs} 
@@ -95,11 +98,11 @@ function MainScreen({ navigation}:any) {
             { NameSend : Name,
               SurnameSend: Surname});
 
-            console.log("The user's name is: " + Name + " Surname: " + Surname);
-          setError('');
+            console.log("Name: " + Name + "  Surname: " + Surname);
+          setError(false);
           }
           else{
-            setError('Please fill in both fields');
+            setError(true);
           }
         }} />
         </FadeInView>
@@ -179,6 +182,9 @@ textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 26,
     textAlign: 'center'
-  }
+  },
 
+  blank: {
+    color: 'transparent',
+  }
 });
